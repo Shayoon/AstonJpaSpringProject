@@ -11,11 +11,13 @@ public class Sonneur implements Musicien {
     private long id;
     @Column(name = "nomsonneur")
     private String nom;
-    private Instrument cornemuse;
+    @OneToOne
+    @JoinColumn(name = "cornemuse_id")
+    private Cornemuse cornemuse;
 
     public Sonneur(String nom, Instrument cornemuse) {
         this.nom = nom;
-        this.cornemuse = cornemuse;
+        this.cornemuse = (Cornemuse) cornemuse;
     }
 
     public Sonneur() {
@@ -24,7 +26,7 @@ public class Sonneur implements Musicien {
     public Sonneur(long id, String nom, Instrument cornemuse) {
         this.id = id;
         this.nom = nom;
-        this.cornemuse = cornemuse;
+        this.cornemuse = (Cornemuse) cornemuse;
     }
 
     public long getId() {
@@ -40,7 +42,7 @@ public class Sonneur implements Musicien {
     }
 
     public void setCornemuse(Instrument cornemuse) {
-        this.cornemuse = cornemuse;
+        this.cornemuse = (Cornemuse) cornemuse;
     }
 
     public String getNom() {
@@ -55,9 +57,6 @@ public class Sonneur implements Musicien {
         return cornemuse;
     }
 
-    public void setPiano(Instrument cornemuse) {
-        this.cornemuse = cornemuse;
-    }
 
     @Override
     public void jouer() {

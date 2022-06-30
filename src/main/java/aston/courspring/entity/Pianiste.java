@@ -11,11 +11,13 @@ public class Pianiste implements Musicien {
     private long id;
     @Column(name = "nompianiste")
     private String nom;
-    private Instrument piano;
+    @OneToOne
+    @JoinColumn(name = "piano_id")
+    private Piano piano;
 
     public Pianiste(String nom, Instrument piano) {
         this.nom = nom;
-        this.piano = piano;
+        this.piano = (Piano) piano;
     }
 
     public Pianiste() {
@@ -24,7 +26,7 @@ public class Pianiste implements Musicien {
     public Pianiste(long id, String nom, Instrument piano) {
         this.id = id;
         this.nom = nom;
-        this.piano = piano;
+        this.piano = (Piano) piano;
     }
 
     public long getId() {
@@ -48,7 +50,7 @@ public class Pianiste implements Musicien {
     }
 
     public void setPiano(Instrument piano) {
-        this.piano = piano;
+        this.piano = (Piano) piano;
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PianisteRepo extends JpaRepository<PianisteRepo, Long> {
+public interface PianisteRepo extends JpaRepository<Pianiste, Long> {
 
     public List<Pianiste> findByNom(String nom);
 

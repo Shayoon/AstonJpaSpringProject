@@ -56,7 +56,7 @@ public class GuitareService {
         }
         Guitare guitareDel = this.findById(id);
         this.guitareRepo.deleteById(id);
-        if (!this.guitareRepo.existsById(id)) {
+        if (this.guitareRepo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.EXPECTATION_FAILED, "Erreur lors de la suppression");
         }
         return guitareDel;
